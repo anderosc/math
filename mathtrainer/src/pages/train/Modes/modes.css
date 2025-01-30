@@ -1,0 +1,42 @@
+
+.body{
+  
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center; /* Center items vertically */
+  align-items: center; /* Center items horizontally */
+  height: 100vh; /* Full viewport height */
+  text-align: center;
+}
+
+.keyboard button{
+    height: 80px;
+    width: 90px;
+
+  font-size: 18px;
+  background-color: #2d177c;
+  color: white;
+  border: 1px solid #0c0a11;
+  cursor: pointer;
+  box-shadow: 5px #6e6b77;
+}
+.keyboard{
+    
+    
+}
+.keyboard button:hover {
+    background-color: #4322b7;
+  }
+
+  .operation{
+    width: 100px;
+    height: 10px;
+    font-size: 40px;
+  }
+
+  .answer{
+    font-size: 40px;
+    height: 80px;
+    width: 240px;
+
+
+  }
