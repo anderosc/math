@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import "../endgame/endgame.css"
 
 function EndGameLanding() {
     const game = (JSON.parse(localStorage.getItem("game")));
-    const points =  JSON.parse(localStorage.getItem("points"))
+    const points =  JSON.parse(localStorage.getItem("points"));
+    let navigate = useNavigate();
 
   
   return (
@@ -14,7 +15,6 @@ function EndGameLanding() {
        <br />
        <br />
        <Card style={{ width: '35rem' }}>
-      {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
       <Card.Body>
         <Card.Title>GAME COMPLETED </Card.Title>
         <Card.Text>
@@ -26,7 +26,8 @@ function EndGameLanding() {
           
         </Card.Text>
         <div>Do you want to play again?</div>
-       <Link to="/games/addition"><Button variant="primary">PLAY AGAIN</Button> </Link> 
+       <Button onClick={() => {
+        navigate(-1)}} variant="primary">PLAY AGAIN</Button>  
         <Link to="/games"><Button variant="primary">Go TO MENU</Button></Link>
 
       </Card.Body>

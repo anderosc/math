@@ -27,34 +27,47 @@ function Games() {
 
         <h1 className="gamesh1" >Math</h1>
         <div className="gamesbox" >
-          <Link onClick={() => setLastGameLS("addition")} className="Link" to="/games/addition">
+          <Link onClick={() => setLastGameLS("addition")} className="Link" to="/games/3drotation">
               <div className="singlegame" >
               <img src="/games/math/addition.png" className="gameimage" alt="Subtraction"  />
               <div>Addition</div>
               </div>
             </Link>
-            <Link className="Link" to="/games/subtraction">
+            <Link onClick={() => setLastGameLS("subtraction")} className="Link" to="/games/subtraction">
               <div className="singlegame" >
               <img src="/games/math/subtraction.png" className="gameimage" />
               <div>Subtraction</div>
               </div>
             </Link>
-            <Link className="Link" to="/games/multiplication">
+            <Link onClick={() => setLastGameLS("multiplication")} className="Link" to="/games/multiplication">
               <div className="singlegame" >
               <img src="/games/math/multiplication.png" className="gameimage"  />
               <div>Multiplication</div>
               </div>
             </Link>
-            <Link className="Link" to="/games/division">
+            <Link onClick={() => setLastGameLS("division")} className="Link" to="/games/division">
               <div className="singlegame" >
               <img src="/games/math/division.png" className="gameimage"  />
               <div>Division</div>
               </div>
             </Link>
         </div>
+        <br />
 
 
+        <h1 className="gamesh1" >Spatial reasoning</h1>
 
+        <div className="gamesbox" >
+            <Link onClick={() => setLastGameLS("3DRotation")} className="Link" to="/games/3drotation">
+              <div className="singlegame" >
+              <img src="/games/math/division.png" className="gameimage"  />
+              <div>3D rotation</div>
+              </div>
+            </Link>
+        </div>
+
+
+        
           
        
         <ToastContainer 

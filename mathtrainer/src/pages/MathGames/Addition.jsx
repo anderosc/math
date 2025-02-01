@@ -42,15 +42,29 @@ function Addition() {
 
             let additionTop = JSON.parse(localStorage.getItem("AdditionTop")) || [];
 
-            if(additionTop.length === 0){
-                additionTop = []
-            }
-            additionTop.push(points);
-            const newArraySorted = additionTop.toSorted((a,b) => b - a).slice(0, 10);
+
+                if(additionTop.length === 0){
+                    additionTop = []
+                }
+                let year = new Date().getFullYear()
+                let month = new Date().getMonth()
+                let day = new Date().getDate()
+                let fulldate = day + "/" + month + "/" + year 
+            additionTop.push(
+                {
+                    "points" : points,
+                    "date" : fulldate
+                }
+            );
+            const newArraySorted = additionTop.toSorted((a,b) => b.points - a.points).slice(0, 10);
             localStorage.setItem("AdditionTop", JSON.stringify(newArraySorted));
 
-            navigate('/games/end', { state: { from: 'games/addition' } });
+            let totalgames = JSON.parse(localStorage.getItem("totalgames")) || [];
+            totalgames = Number(totalgames + 1);
+            localStorage.setItem("totalgames", JSON.stringify(totalgames));
 
+
+            navigate('/games/end', { state: { from: 'games/addition' } });
         }
     }, [seconds, gameStatus]);
     
@@ -62,19 +76,19 @@ function Addition() {
             setMin(0);
             setMax(10)
         }else if(level === 2){
-            setMin(10);
+            setMin(8);
             setMax(20);
         }else if(level === 3){
             setMin(10);
-            setMax(100);
+            setMax(99);
         }else if(level === 4){
             setMin(100);
-            setMax(700);
+            setMax(999);
         }else if(level === 5){
-            setMin(700);
-            setMax(7000);
+            setMin(1000);
+            setMax(9999);
         }else if(level === 6){
-            setMin(7000);
+            setMin(10000);
             setMax(100000);
         }
       }, [level]);
@@ -90,29 +104,32 @@ function Addition() {
     }
 
     function pointsTimer(){
-        clearTimeout(timerRef.current);  // Cancel previous timer
-        setExtraPoints(1.25);
+        setExtraPoints(2);
         if(level === 1 ){
-            timerRef.current = setTimeout(() => {
-                setExtraPoints(1);
-            }, 3000);
+            timerRef.current = setInterval(() =>{
+                setExtraPoints(prevPoints => prevPoints > 1 ? prevPoints - 0.1 : 1 )
+            }, 500)
         }else if(level === 2){
-            timerRef.current = setTimeout(() => {
-                setExtraPoints(1);
-            }, 4500);
+            timerRef.current = setInterval(() =>{
+                setExtraPoints(prevPoints => prevPoints > 1 ? prevPoints - 0.1 : 1 )
+            }, 1000)
         } else if(level === 3){
-            timerRef.current = setTimeout(() => {
-                setExtraPoints(1);
-            }, 4500);
+            timerRef.current = setInterval(() =>{
+                setExtraPoints(prevPoints => prevPoints > 1 ? prevPoints - 0.1 : 1 )
+            }, 1000)
         }else if(level === 4){
-            timerRef.current = setTimeout(() => {
-                setExtraPoints(1);
-            }, 5000);
+            timerRef.current = setInterval(() =>{
+                setExtraPoints(prevPoints => prevPoints > 1 ? prevPoints - 0.08 : 1 )
+            }, 1000)
         }else if(level === 5){
-            timerRef.current = setTimeout(() => {
-                setExtraPoints(1);
-            }, 6500);
-        }                      
+            timerRef.current = setInterval(() =>{
+                setExtraPoints(prevPoints => prevPoints > 1 ? prevPoints - 0.05 : 1 )
+            }, 1000)
+        }else if(level === 6){
+            timerRef.current = setInterval(() =>{
+                setExtraPoints(prevPoints => prevPoints > 1 ? prevPoints - 0.025 : 1 )
+            }, 1000)
+        }                        
     }
 
 
@@ -127,14 +144,14 @@ function Addition() {
         if(answer == checkedanswer ){
             setCorrectCount(correctCount + 1)
             setAnswer("");
+            console.log(extraPoints);
+
             setPoints(prevPoints => Math.round(prevPoints + ((level * 10) * extraPoints)));
-            setSeconds(seconds + 3);
+            setSeconds(seconds + 4);
             randomNumberGenerator();
             wonAudio.play();
+            clearTimeout(timerRef.current); 
             pointsTimer();
-            // functions for time measuring
-            // () => clearTimeout(timer);
-
             
         } else{
             setAnswer("");
@@ -183,12 +200,6 @@ function Addition() {
                     <img src="/gif/wrongans.gif"  />
                     </div>
                     )}
-
-                            {/* {showRecordGif && (
-                            <div className="gif2-popup" >
-                            <img src="/gif/celebrate.gif"  />
-                            </div>
-                            )} */}
 
             <br />
 
