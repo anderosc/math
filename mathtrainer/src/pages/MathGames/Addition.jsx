@@ -1,4 +1,4 @@
-import {useEffect, useState } from "react"
+import {useEffect, useRef, useState } from "react"
 import "./compmodes.css"
 import { useNavigate } from "react-router-dom";
 
@@ -8,7 +8,7 @@ function Addition() {
     const [randomNumber, setRandomNumber] = useState("");
     const [randomNumber2, setRandomNumber2] = useState("");
     const [seconds, setSeconds] = useState(40);
-    const [extraSeconds, setExtraSecond] = useState(false);
+    const [extraPoints, setExtraPoints] = useState(1);
     const [gameStatus, setGameStatus] = useState(false);
     const [points, setPoints] = useState(0)
     const [level, setLevel] = useState(1);
@@ -17,6 +17,7 @@ function Addition() {
     const navigate = useNavigate();
     const [min, setMin] = useState(0);
     const [max, setMax] = useState(10);
+    const timerRef = useRef(null);
 
     let wonAudio = new Audio("/audio/correct.wav");
     let wrongAudio = new Audio("/audio/incorrect.wav");
@@ -26,6 +27,7 @@ function Addition() {
         setOperation("+");
         setGameStatus(true);
         randomNumberGenerator();
+        pointsTimer();
     }
 
 
@@ -87,24 +89,51 @@ function Addition() {
         return;
     }
 
+    function pointsTimer(){
+        clearTimeout(timerRef.current);  // Cancel previous timer
+        setExtraPoints(1.25);
+        if(level === 1 ){
+            timerRef.current = setTimeout(() => {
+                setExtraPoints(1);
+            }, 3000);
+        }else if(level === 2){
+            timerRef.current = setTimeout(() => {
+                setExtraPoints(1);
+            }, 4500);
+        } else if(level === 3){
+            timerRef.current = setTimeout(() => {
+                setExtraPoints(1);
+            }, 4500);
+        }else if(level === 4){
+            timerRef.current = setTimeout(() => {
+                setExtraPoints(1);
+            }, 5000);
+        }else if(level === 5){
+            timerRef.current = setTimeout(() => {
+                setExtraPoints(1);
+            }, 6500);
+        }                      
+    }
+
+
 
     const checkAnswer = () => {
         if(gameStatus === false){
             return;
         }
-
+        
         const checkedanswer = randomNumber + randomNumber2
 
         if(answer == checkedanswer ){
             setCorrectCount(correctCount + 1)
             setAnswer("");
-            setPoints(points + (level * 10))
+            setPoints(prevPoints => Math.round(prevPoints + ((level * 10) * extraPoints)));
             setSeconds(seconds + 3);
             randomNumberGenerator();
             wonAudio.play();
+            pointsTimer();
             // functions for time measuring
-            // clearTimeout(pointsTimer);
-            // extrasec();
+            // () => clearTimeout(timer);
 
             
         } else{
@@ -130,12 +159,7 @@ function Addition() {
         }
       }, [correctCount]);
 
-      //TO-DO  function for time measuring.
-    // function extrasec(){
-    //    const pointsTimer = setTimeout(
-    //     if()
-    //    )
-    // }
+ 
 
 
       
