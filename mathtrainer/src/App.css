@@ -1,25 +1,5 @@
-/* TO-DO desing header so it does not get in conflict with other elements in page 
-.topbarmenu hght + border is for experiment to see where it is located*/
 
-.top{
-      
-
-      
+.MAINROOT{ 
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
-
-.topbarmenu{
-    display: flex;
-    color: white;
-    text-decoration: none;
-    height: 80px;
-    border: 1px solid black;
-}
-.button{
-    margin-left: 15px;
-    font-size: 23px;
-    border-radius: 5px;
-}
-th, td{
-    border: 1px, solid black;
-  }
-

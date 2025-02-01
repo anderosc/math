@@ -1,0 +1,27 @@
+.gamestop{
+    text-align: center;
+     padding: 20px; 
+}
+.gamesh1{
+    font-size: 3rem;
+}
+.gamesbox{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0; 
+}
+.singlegame{
+    text-align: center;
+}
+
+.gameimage{
+    width: 80px;
+    height: 80px;
+    border-radius: 15px;
+    border: 5px solid bisque ;
+    cursor: pointer;
+}
+.Link{
+    text-decoration: none;
+}

@@ -1,7 +1,10 @@
 
 function Home() {
   return (
-    <div>Home</div>
+    <div>
+      homee
+      <p>home</p>
+    </div>
   )
 }
 
