@@ -27,7 +27,7 @@ function Games() {
 
         <h1 className="gamesh1" >Math</h1>
         <div className="gamesbox" >
-          <Link onClick={() => setLastGameLS("addition")} className="Link" to="/games/3drotation">
+          <Link onClick={() => setLastGameLS("addition")} className="Link" to="/games/addition">
               <div className="singlegame" >
               <img src="/games/math/addition.png" className="gameimage" alt="Subtraction"  />
               <div>Addition</div>
@@ -62,6 +62,18 @@ function Games() {
               <div className="singlegame" >
               <img src="/games/math/division.png" className="gameimage"  />
               <div>3D rotation</div>
+              </div>
+            </Link>
+        </div>
+
+
+        <h1 className="gamesh1" >Binary</h1>
+
+        <div className="gamesbox" >
+            <Link onClick={() => setLastGameLS("3DRotation")} className="Link" to="/games/binary">
+              <div className="singlegame" >
+              <img src="/games/math/division.png" className="gameimage"  />
+              <div>Binary Conversion</div>
               </div>
             </Link>
         </div>

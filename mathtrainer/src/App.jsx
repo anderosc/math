@@ -11,6 +11,7 @@ import Multiplication from "./pages/MathGames/Multiplication";
 import Division from "./pages/MathGames/Division";
 import Statistics from "./pages/statistics/Statistics";
 import ThreeDrotation from "./pages/spatialReasoning/threeDrotation";
+import BinaryConversion from "./pages/BinaryConversion/BinaryConversion";
 
 function App() {
 
@@ -30,7 +31,10 @@ function App() {
 
     <Route path="/statistics" element={< Statistics />} /> 
 
-    <Route path="/games/3drotation" element={< ThreeDrotation />} /> 
+    <Route path="/games/3drotation" element={< ThreeDrotation />} />
+
+    <Route path="/games/binary" element={< BinaryConversion />} /> 
+
 
 </Routes>
 </div>

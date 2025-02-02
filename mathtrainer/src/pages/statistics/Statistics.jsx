@@ -13,8 +13,7 @@ function Statistics() {
   return (
     
     <div>
-        <div> You have played {totalgames} games so far! Great!</div>
-        
+    {totalgames == 0 ? <div> You have not played games yet! </div> : <div> You have played {totalgames} games so far! Great!</div>}        
     <Accordion className="main" alwaysOpen >
         
       {addition.length >= 1 ? <div> <Accordion.Item eventKey="0" >
@@ -30,10 +29,10 @@ function Statistics() {
                     </tr>
                 </thead>
                 <tbody>
-                    {addition.map(one =>
-                        <tr key={one}>
-                            <td>{one.date}</td>
-                            <td>{one.points}</td>
+                    {addition.map((add, index) =>
+                        <tr key={index }>
+                            <td>{add.date}</td>
+                            <td>{add.points}</td>
                         </tr>
                     )}
                 </tbody>
@@ -55,10 +54,10 @@ function Statistics() {
                     </tr>
                 </thead>
                 <tbody>
-                    {subtraction.map(one =>
-                        <tr key={one}>
-                            <td>{one.date}</td>
-                            <td>{one.points}</td>
+                    {subtraction.map((sub, index) =>
+                        <tr key={index}>
+                            <td>{sub.date}</td>
+                            <td>{sub.points}</td>
                         </tr>
                     )}
                 </tbody>
@@ -81,10 +80,10 @@ function Statistics() {
                     </tr>
                 </thead>
                 <tbody>
-                    {multiplication.map(one =>
-                        <tr key={one}>
-                            <td>{one.date}</td>
-                            <td>{one.points}</td>
+                    {multiplication.map((multi, index) =>
+                        <tr key={index}>
+                            <td>{multi.date}</td>
+                            <td>{multi.points}</td>
                         </tr>
                     )}
                 </tbody>
@@ -106,10 +105,10 @@ function Statistics() {
                     </tr>
                 </thead>
                 <tbody>
-                    {division.map(one =>
-                        <tr key={one}>
-                            <td>{one.date}</td>
-                            <td>{one.points}</td>
+                    {division.map((divi, index) =>
+                        <tr key={index}>
+                            <td>{divi.date}</td>
+                            <td>{divi.points}</td>
                         </tr>
                     )}
                 </tbody>
