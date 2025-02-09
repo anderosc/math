@@ -183,7 +183,7 @@ function Addition() {
 
   return (
     <div> 
-        <div>
+        <div className="statsbox">
             <p>LEVEL:{level}</p>
             <p>TIME: {seconds} sec</p>
             <p>POINTS: {points}  </p>

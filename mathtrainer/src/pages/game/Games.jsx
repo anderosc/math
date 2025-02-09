@@ -25,7 +25,7 @@ function Games() {
         <div className="gamestop" >
 
 
-        <h1 className="gamesh1" >Math</h1>
+        <h1 className="gamesh1" >Mathhhh</h1>
         <div className="gamesbox" >
           <Link onClick={() => setLastGameLS("addition")} className="Link" to="/games/addition">
               <div className="singlegame" >
