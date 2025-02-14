@@ -3,7 +3,7 @@
     display: flex; /* Kasutab flexbox paigutust */
     align-items: center; /* Keskendab vertikaalselt */
     justify-content: space-between; /* Jagab ruumi elementide vahel ühtlaselt */
-    margin-left: 15%;
+    margin-left: 10%;
     margin-top: 5%;
     margin-right: 20%;
   }
@@ -22,3 +22,52 @@
     max-width: 50%; /* Tagab, et pilt ei ületa konteineri laiust */
     height: auto; /* Hoidke pildi suhet */
   }
+
+
+
+  .second {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 20%;
+    margin-top: 10%;
+    margin-right: 10%;
+  }
+  .secondtext {
+    flex: 1;
+
+  }
+  
+  .secondimg {
+
+    flex: 1;
+    text-align: center;
+  }
+  
+  .second img {
+    height: 16rem;
+  }
+  
+
+  .third {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 10%;
+    margin-top: 10%;
+    margin-right: 20%;
+    margin-bottom: 10%;
+  }
+  .thirdtext {
+    flex: 1;
+  }
+  .thirdimg {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .third img {
+    height: 16rem;
+  }
+  

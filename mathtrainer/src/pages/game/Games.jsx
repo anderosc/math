@@ -12,6 +12,7 @@ function Games() {
   
     return (
       <div className="games">
+        <img className="backgroundimg" src="/menupics/leaf.png" alt="" />
             <div className="menu">
             <Sidebar>
   <Menu> <br />

@@ -21,8 +21,10 @@ function App() {
     <NavBar />
     
   <Routes>
+    <Route path="/" element={< Home />} />
     <Route path="/home" element={< Home />} />
     <Route path="/games" element={< Games />} /> 
+
     <Route path="/games/addition" element={< Addition />} /> 
     <Route path="/games/subtraction" element={< Subtraction />} /> 
     <Route path="/games/multiplication" element={< Multiplication />} /> 
