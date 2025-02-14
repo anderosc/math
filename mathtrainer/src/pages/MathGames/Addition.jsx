@@ -182,7 +182,7 @@ function Addition() {
       
 
   return (
-    <div> 
+    <div className="game"> 
         <div className="statsbox">
             <p>LEVEL:{level}</p>
             <p>TIME: {seconds} sec</p>
@@ -190,7 +190,7 @@ function Addition() {
         </div>
 
         <div className= "body">
-                {gameStatus === true ? <label className= "operation">{randomNumber} {operation} {randomNumber2}</label> : ""}
+                {gameStatus === true ? <label className= "operation">{randomNumber} {operation} {randomNumber2}</label> : <label className= "operation"> </label> }
                 <br />
                 <br />
                 <label className= "answer">{answer}</label>

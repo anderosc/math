@@ -1,6 +1,6 @@
 import {  Route, Routes } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Home from "./pages/Home"
+import Home from "./pages/home/Home"
 import './App.css'
 import NavBar from "./components/NavBar";
 import Games from "./pages/game/Games";
