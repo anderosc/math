@@ -12,6 +12,8 @@ import Division from "./pages/MathGames/Division";
 import Statistics from "./pages/statistics/Statistics";
 import ThreeDrotation from "./pages/spatialReasoning/threeDrotation";
 import BinaryConversion from "./pages/BinaryConversion/BinaryConversion";
+import Login from "./auth/Login";
+import SignUp from "./auth/SignUp";
 
 function App() {
 
@@ -23,6 +25,8 @@ function App() {
   <Routes>
     <Route path="/" element={< Home />} />
     <Route path="/home" element={< Home />} />
+    <Route path="/login" element={< Login />} />
+    <Route path="/signup" element={< SignUp />} />
     <Route path="/games" element={< Games />} /> 
 
     <Route path="/games/addition" element={< Addition />} /> 

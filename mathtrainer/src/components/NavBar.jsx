@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import "./navbar.css"
-import { Link} from "react-router-dom";
+import { Link, Links} from "react-router-dom";
 
 
 function NavBar() {
@@ -22,15 +22,16 @@ function NavBar() {
             <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
 
           </Nav>
-          <select>
+          {/* <select>
               <option value="eng">🇬🇧 ENG</option>
               <option value="et">🇪🇪 ET</option>
               <option value="fin">🇫🇮 FIN</option>
               <option value="de">🇩🇪 DE</option>
-            </select>
+            </select> */}
             <br />
-          <button>ttt</button>
-        </Navbar.Collapse>
+         <Link to="/login"> <button>Log In</button></Link>
+         <Link to="/signup"> <button>Sign Up</button></Link>        
+         </Navbar.Collapse>
       </Container>
     </Navbar>
 
