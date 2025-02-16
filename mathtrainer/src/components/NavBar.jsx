@@ -3,10 +3,14 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import "./navbar.css"
-import { Link, Links} from "react-router-dom";
+import { Link} from "react-router-dom";
+import { useAuth } from "../contexts/authContext";
+import { doSignOut } from "../firebase/auth";
 
 
 function NavBar() {
+      const { userLoggedIn } = useAuth()
+
   return (
     <>
     <Navbar expand="lg" className="bg-body-tertiary">
@@ -29,8 +33,16 @@ function NavBar() {
               <option value="de">🇩🇪 DE</option>
             </select> */}
             <br />
-         <Link to="/login"> <button>Log In</button></Link>
-         <Link to="/signup"> <button>Sign Up</button></Link>        
+            {userLoggedIn === true ? (
+                <>
+                  <button onClick={() => doSignOut()}>Log Out</button>
+                </>
+              ) : (
+                <>
+                  <Link to="/login"><button >Log In</button></Link>
+                  <Link to="/signup"><button>Sign Up</button></Link>
+                </>
+              )}     
          </Navbar.Collapse>
       </Container>
     </Navbar>
