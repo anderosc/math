@@ -34,7 +34,6 @@ function Games() {
 
             <div className="sidebaritem"> GAMES</div>
             <MenuItem onClick={() => setSelectedCategory("MATH")}>Math</MenuItem>
-            <MenuItem onClick={() => setSelectedCategory("BINARY")}>Binary</MenuItem>
             <MenuItem onClick={() => setSelectedCategory("SPATIAL REASONING")}>Spatial reasoning</MenuItem>
           </Menu>
         </Sidebar>

@@ -14,6 +14,7 @@ import ThreeDrotation from "./pages/spatialReasoning/threeDrotation";
 import BinaryConversion from "./pages/BinaryConversion/BinaryConversion";
 import Login from "./auth/Login";
 import SignUp from "./auth/SignUp";
+import ColorAndTextMatch from "./pages/flexibility/ColorAndTextMatch";
 
 function App() {
 
@@ -33,13 +34,17 @@ function App() {
     <Route path="/games/subtraction" element={< Subtraction />} /> 
     <Route path="/games/multiplication" element={< Multiplication />} /> 
     <Route path="/games/division" element={< Division />} />
+    <Route path="/games/binary" element={< BinaryConversion />} /> 
+
     <Route path="/games/end" element={< EndGameLanding />} /> 
 
     <Route path="/statistics" element={< Statistics />} /> 
 
     <Route path="/games/3drotation" element={< ThreeDrotation />} />
 
-    <Route path="/games/binary" element={< BinaryConversion />} /> 
+    <Route path="/games/colorandtextmatch" element={< ColorAndTextMatch />} />
+
+
 
 
 </Routes>

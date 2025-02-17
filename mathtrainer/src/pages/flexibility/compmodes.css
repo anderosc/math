@@ -1,0 +1,95 @@
+.game{
+
+}
+.body{
+  
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center; /* Center items vertically */
+  /* align-items: center; Center items horizontally */
+  text-align: center; 
+
+}
+
+.keyboard button{
+
+    height: 120px;
+    width: 140px;
+  margin: 10px;
+  border-radius: 10%;
+  font-size: 2rem;
+  background-color: #2d177c;
+  color: white;
+  border: 1px solid #0c0a11;
+  cursor: pointer;
+  box-shadow: 5px #6e6b77;
+
+}
+.keyboard{
+  
+}
+.keyboard button:hover {
+    background-color: #4322b7;
+  }
+
+  .operation{
+    width: 300px;
+    height: 90px;
+    font-size: 40px;
+    background-color: white;
+  }
+
+  .answer{
+    margin-bottom: 2%;
+    font-size: 40px;
+    height: 50px;
+    width: 240px;
+  }
+
+  .gif-popup {
+    position: absolute;
+    top: 40%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.gif-popup img {
+  height: 300px;
+  width: 300px;
+
+}
+
+.gif2-popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.gif2-popup img {
+height: 600px;
+width: 600px;
+
+}
+
+.button-00{
+  background-image: linear-gradient(144deg,#1f0f2a, #5B42F3 50%,#00DDEB);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(152, 65, 252, 0) 0 15px 30px -5px;
+  max-width: 100%;
+  min-width: 140px;
+  font-size: 20px;
+}
+.statsbox{
+  margin-left: 10%;
+  margin-top: 5%;
+  font-size: 15px;
+}

@@ -29,7 +29,7 @@
     },
     {
         "id": 5,
-        "category": "Binary",
+        "category": "Math",
         "description": "Binary Conversion",
         "image": "/games/math/multiplication.png",
         "link" : "/games/binary"
@@ -40,5 +40,12 @@
         "description": "3D rotation",
         "image": "",
         "link" : "/games/3drotation"
+    },
+    {
+        "id": 7,
+        "category": "Flexibility",
+        "description": "Color and text match",
+        "image": "/games/math/multiplication.png",
+        "link" : "/games/colorandtextmatch"
     }
 ]
