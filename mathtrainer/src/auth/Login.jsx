@@ -21,15 +21,7 @@ function Login() {
         }
     }
 
-    const onGoogleSignIn = (e) => {
-        e.preventDefault()
-        if (!isSigningIn) {
-            setIsSigningIn(true)
-            doSignInWithGoogle().catch(err => {
-                setIsSigningIn(false)
-            })
-        }
-    }
+   
 
     return (
         <div>

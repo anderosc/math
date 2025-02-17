@@ -11,6 +11,7 @@ const SignUp = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setconfirmPassword] = useState('')
+    const [username, setUsername] = useState('');
     const [isRegistering, setIsRegistering] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
 
@@ -20,7 +21,7 @@ const SignUp = () => {
         e.preventDefault()
         if(!isRegistering) {
             setIsRegistering(true)
-            await doCreateUserWithEmailAndPassword(email, password)
+            await doCreateUserWithEmailAndPassword(email, password, username)
         }
     }
 
@@ -38,7 +39,17 @@ const SignUp = () => {
                     <form
                         onSubmit={onSubmit}
                         className="space-y-4"
-                    >
+                    >   
+                        <div>
+                            <label>Username</label> <br />
+                            <input
+                                type="text"
+                                required
+                                value={username} 
+                                onChange={(e) => setUsername(e.target.value)}
+                            />
+                        </div>
+
                         <div>
                             <label>
                                 Email

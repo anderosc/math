@@ -4,11 +4,6 @@ import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
 
 
 function Games() {
-  const setLastGameLS = (i) => {
-    localStorage.setItem("game", JSON.stringify(i));
-  }
- 
-  
   
     return (
       <div className="games">
@@ -30,7 +25,7 @@ function Games() {
         <div className="gamesh1" >MATH</div>
         <div className="gamesbox" >
           <div className="gamesboxinside">
-          <Link onClick={() => setLastGameLS("addition")} className="Link" to="/games/addition">
+          <Link  className="Link" to="/games/addition">
               <div className="singlegame" >
               <img src="/games/math/addition.png" className="gameimage" alt="Subtraction"  />
               <div>Addition</div>
@@ -40,7 +35,7 @@ function Games() {
            
 
             <div className="gamesboxinside">
-            <Link onClick={() => setLastGameLS("subtraction")} className="Link" to="/games/subtraction">
+            <Link className="Link" to="/games/subtraction">
               <div className="singlegame" >
               <img src="/games/math/subtraction.png" className="gameimage" />
               <div>Subtraction</div>
@@ -50,7 +45,7 @@ function Games() {
 
 
             <div className="gamesboxinside">
-            <Link onClick={() => setLastGameLS("multiplication")} className="Link" to="/games/multiplication">
+            <Link className="Link" to="/games/multiplication">
               <div className="singlegame" >
               <img src="/games/math/multiplication.png" className="gameimage"  />
               <div>Multiplication</div>
@@ -59,7 +54,7 @@ function Games() {
             </div>
 
             <div className="gamesboxinside">
-            <Link onClick={() => setLastGameLS("division")} className="Link" to="/games/division">
+            <Link className="Link" to="/games/division">
               <div className="singlegame" >
               <img src="/games/math/division.png" className="gameimage"  />
               <div>Division</div>
@@ -76,7 +71,7 @@ function Games() {
 
         <div className="gamesbox" >
         <div className="gamesboxinside">
-            <Link onClick={() => setLastGameLS("3DRotation")} className="Link" to="/games/3drotation">
+            <Link  className="Link" to="/games/3drotation">
               <div className="singlegame" >
               <img src="/games/math/division.png" className="gameimage"  />
               <div>3D rotation</div>
@@ -92,7 +87,7 @@ function Games() {
 
         <div className="gamesbox" >
         <div className="gamesboxinside">
-            <Link onClick={() => setLastGameLS("3DRotation")} className="Link" to="/games/binary">
+            <Link  className="Link" to="/games/binary">
               <div className="singlegame" >
               <img src="/games/math/division.png" className="gameimage"  />
               <div>Binary Conversion</div>

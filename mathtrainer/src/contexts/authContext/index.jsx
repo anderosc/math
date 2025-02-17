@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { auth } from "../../firebase/firebase";
-// import { GoogleAuthProvider } from "firebase/auth";
 import { GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
+import { getDatabase, ref, get } from "firebase/database"; // Lisa Firebase Database
 
 const AuthContext = React.createContext();
 
@@ -15,44 +15,51 @@ export function AuthProvider({ children }) {
   const [isEmailUser, setIsEmailUser] = useState(false);
   const [isGoogleUser, setIsGoogleUser] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [username, setUsername] = useState(""); // Lisa username state
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, initializeUser);
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        setCurrentUser(user);
+        setUserLoggedIn(true);
+
+        const isEmail = user.providerData.some(
+          (provider) => provider.providerId === "password"
+        );
+        setIsEmailUser(isEmail);
+
+        const isGoogle = user.providerData.some(
+          (provider) => provider.providerId === GoogleAuthProvider.PROVIDER_ID
+        );
+        setIsGoogleUser(isGoogle);
+
+        // **Laadi kasutajanimi Firebase Realtime Database'ist**
+        const db = getDatabase();
+        const userRef = ref(db, "user/" + user.uid); // Veendu, et Firebases on "users/" mitte "user/"
+        const snapshot = await get(userRef);
+
+        if (snapshot.exists()) {
+          setUsername(snapshot.val().username); // Salvesta username state'i
+        } else {
+          setUsername("Unknown user(ERROR)"); // Kui kasutajanime pole, pane placeholder
+        }
+      } else {
+        setCurrentUser(null);
+        setUserLoggedIn(false);
+        setUsername(""); // Nulli username kui pole sisse logitud
+      }
+      setLoading(false);
+    });
+
     return unsubscribe;
   }, []);
-
-  async function initializeUser(user) {
-    if (user) {
-
-      setCurrentUser({ ...user });
-
-      // check if provider is email and password login
-      const isEmail = user.providerData.some(
-        (provider) => provider.providerId === "password"
-      );
-      setIsEmailUser(isEmail);
-
-      // check if the auth provider is google or not
-      const isGoogle = user.providerData.some(
-        (provider) => provider.providerId === GoogleAuthProvider.PROVIDER_ID
-      );
-      setIsGoogleUser(isGoogle);
-
-      setUserLoggedIn(true);
-    } else {
-      setCurrentUser(null);
-      setUserLoggedIn(false);
-    }
-
-    setLoading(false);
-  }
 
   const value = {
     userLoggedIn,
     isEmailUser,
     isGoogleUser,
     currentUser,
-    setCurrentUser
+    username, // Lisa username väärtus konteksti
   };
 
   return (

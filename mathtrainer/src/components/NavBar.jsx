@@ -6,10 +6,11 @@ import "./navbar.css"
 import { Link} from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
 import { doSignOut } from "../firebase/auth";
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
 function NavBar() {
-      const { userLoggedIn } = useAuth()
+      const { userLoggedIn, username } = useAuth()
 
   return (
     <>
@@ -26,23 +27,25 @@ function NavBar() {
             <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
 
           </Nav>
-          {/* <select>
-              <option value="eng">🇬🇧 ENG</option>
-              <option value="et">🇪🇪 ET</option>
-              <option value="fin">🇫🇮 FIN</option>
-              <option value="de">🇩🇪 DE</option>
-            </select> */}
+
             <br />
-            {userLoggedIn === true ? (
-                <>
-                  <button onClick={() => doSignOut()}>Log Out</button>
-                </>
-              ) : (
+            {userLoggedIn ? 
+                <NavDropdown title={username} id="basic-nav-dropdown">
+                <NavDropdown.Item href="#action/3.1">Settings</NavDropdown.Item>
+
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action/3.4" onClick={() => doSignOut()}>
+                  Log Out
+                </NavDropdown.Item>
+                </NavDropdown> 
+              : undefined}
+            
+            {userLoggedIn === false ? 
                 <>
                   <Link to="/login"><button >Log In</button></Link>
                   <Link to="/signup"><button>Sign Up</button></Link>
                 </>
-              )}     
+              : undefined}     
          </Navbar.Collapse>
       </Container>
     </Navbar>
