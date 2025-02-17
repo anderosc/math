@@ -49,7 +49,7 @@ function Addition() {
     
           // Save the score and send it to another file
           const userId = auth.currentUser.uid; 
-          saveScore(points, userId); 
+          saveScore(points, userId, "addition_scores/"); 
     
           // Liigu lõpu ekraanile
           navigate("/games/end", { state: { from: "games/addition" } });

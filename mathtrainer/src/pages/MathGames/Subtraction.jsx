@@ -1,6 +1,8 @@
 import {useEffect, useRef, useState } from "react"
 import "./compmodes.css"
 import { useNavigate } from "react-router-dom";
+import { auth } from "../../firebase/firebase"; 
+import { saveScore } from "../../firebase/savescore";
 
 function Subtraction() {
     const [operation, setOperation] = useState("");
@@ -32,40 +34,26 @@ function Subtraction() {
 
 
 // timer and endgame routing
-    useEffect(() => {
-        if (gameStatus && seconds > 0) {
-            const timer = setTimeout(() => setSeconds(seconds - 1), 1000);
-            return () => clearTimeout(timer); 
-        } else if ( seconds <= 0) {
+useEffect(() => {
+    if (gameStatus && seconds > 0) {
+      const timer = setTimeout(() => setSeconds(seconds - 1), 1000);
+      return () => clearTimeout(timer);
+    } else if (seconds <= 0) {
+      if (!auth.currentUser) {
+        return;
+      }
 
-            localStorage.setItem("points", JSON.stringify(points));
+      localStorage.setItem("points", JSON.stringify(points));
+      localStorage.setItem("game", JSON.stringify("Subtraction"));
 
-            let additionTop = JSON.parse(localStorage.getItem("SubtractionTop")) || [];
+      // Save the score and send it to another file
+      const userId = auth.currentUser.uid; 
+      saveScore(points, userId, "subtraction_scores/"); 
 
-            if(additionTop.length === 0){
-                additionTop = []
-            }
-            let year = new Date().getFullYear()
-            let month = new Date().getMonth()
-            let day = new Date().getDate()
-            let fulldate = day + "/" + month + "/" + year 
-            additionTop.push(
-              {
-                  "points" : points,
-                  "date" : fulldate
-              }
-          );
-            const newArraySorted = additionTop.toSorted((a,b) => b.points - a.points).slice(0, 10);
-            localStorage.setItem("SubtractionTop", JSON.stringify(newArraySorted));
-
-            let totalgames = JSON.parse(localStorage.getItem("totalgames")) || [];
-            totalgames = Number(totalgames + 1);
-            localStorage.setItem("totalgames", JSON.stringify(totalgames));
-
-            navigate('/games/end', { state: { from: 'games/subtraction' } });
-
-        }
-    }, [seconds, gameStatus]);
+      // Liigu lõpu ekraanile
+      navigate("/games/end", { state: { from: "games/subtraction" } });
+    }
+  }, [seconds, gameStatus]);
     
     
 
@@ -187,7 +175,7 @@ function Subtraction() {
 
   return (
     <div> 
-        <div>
+        <div className="statsbox">
             <p>LEVEL:{level}</p>
             <p>TIME: {seconds} sec</p>
             <p>POINTS: {points}  </p>

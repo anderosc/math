@@ -1,106 +1,67 @@
-import {  Link } from "react-router-dom";
-import "./games.css"
-import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
-
+import { Link } from "react-router-dom";
+import "./games.css";
+import { Sidebar, Menu, MenuItem  } from 'react-pro-sidebar';
+import { useState } from "react";
+import gamesData from "../../data/games.json";
 
 function Games() {
-  
-    return (
-      <div className="games">
-        <img className="backgroundimg" src="/menupics/leaf.png" alt="" />
-            <div className="menu">
-            <Sidebar>
-  <Menu> <br />
-    <div> GAMES </div>
-    <br />
-    <MenuItem> Math </MenuItem>
-    <MenuItem> Spatial reasoning </MenuItem>
-  </Menu>
-</Sidebar>;
-            </div>
-          
-        <div className="gamestop" >
-        
+  const groupedGames = gamesData.reduce((acc, game) => {
+    const categoryKey = game.category.toUpperCase();
+    if (!acc[categoryKey]) {
+      acc[categoryKey] = [];
+    }
+    acc[categoryKey].push(game);
+    return acc;
+  }, {});
+
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+  const filteredGames = selectedCategory
+    ? { [selectedCategory]: groupedGames[selectedCategory] }
+    : groupedGames;
+
+  return (
+    <div className="games">
+      <img className="backgroundimg" src="/menupics/leaf.png" alt="" />
+      <div className="menu">
+        <Sidebar>
+          <Menu>
+            <br />
+            <MenuItem onClick={() => setSelectedCategory(null)}>Show All</MenuItem>
+            <br />
+            <MenuItem onClick={() => setSelectedCategory(null)}>Favorites</MenuItem>
+            <br />
+
+            <div className="sidebaritem"> GAMES</div>
+            <MenuItem onClick={() => setSelectedCategory("MATH")}>Math</MenuItem>
+            <MenuItem onClick={() => setSelectedCategory("BINARY")}>Binary</MenuItem>
+            <MenuItem onClick={() => setSelectedCategory("SPATIAL REASONING")}>Spatial reasoning</MenuItem>
+          </Menu>
+        </Sidebar>
+      </div>
+      <div className="gamestop">
         <div className="menusection">
-        <div className="gamesh1" >MATH</div>
-        <div className="gamesbox" >
-          <div className="gamesboxinside">
-          <Link  className="Link" to="/games/addition">
-              <div className="singlegame" >
-              <img src="/games/math/addition.png" className="gameimage" alt="Subtraction"  />
-              <div>Addition</div>
+          {Object.entries(filteredGames).map(([category, games]) => (
+            <div key={category}>
+              <div className="gamesh1">{category}</div>
+              <div className="gamesbox">
+                {games.map((game) => (
+                  <div className="gamesboxinside" key={game.id}>
+                    <Link className="Link" to={game.link}>
+                      <div className="singlegame">
+                        <img src={game.image} className="gameimage" alt={game.description} />
+                        <div>{game.description}</div>
+                      </div>
+                    </Link>
+                  </div>
+                ))}
               </div>
-            </Link>
             </div>
-           
-
-            <div className="gamesboxinside">
-            <Link className="Link" to="/games/subtraction">
-              <div className="singlegame" >
-              <img src="/games/math/subtraction.png" className="gameimage" />
-              <div>Subtraction</div>
-              </div>
-            </Link>
-            </div>
-
-
-            <div className="gamesboxinside">
-            <Link className="Link" to="/games/multiplication">
-              <div className="singlegame" >
-              <img src="/games/math/multiplication.png" className="gameimage"  />
-              <div>Multiplication</div>
-              </div>
-            </Link>
-            </div>
-
-            <div className="gamesboxinside">
-            <Link className="Link" to="/games/division">
-              <div className="singlegame" >
-              <img src="/games/math/division.png" className="gameimage"  />
-              <div>Division</div>
-              </div>
-            </Link>
-            </div>
+          ))}
         </div>
-        </div>
-        <br />
+      </div>
+    </div>
+  );
+}
 
-
-        <div className="menusection">
-        <div className="gamesh1" >SPATIAL REASONING</div>
-
-        <div className="gamesbox" >
-        <div className="gamesboxinside">
-            <Link  className="Link" to="/games/3drotation">
-              <div className="singlegame" >
-              <img src="/games/math/division.png" className="gameimage"  />
-              <div>3D rotation</div>
-              </div>
-            </Link>
-            </div>
-        </div>
-        </div>
-
-
-        <div className="menusection">
-        <div className="gamesh1" >BINARY</div>
-
-        <div className="gamesbox" >
-        <div className="gamesboxinside">
-            <Link  className="Link" to="/games/binary">
-              <div className="singlegame" >
-              <img src="/games/math/division.png" className="gameimage"  />
-              <div>Binary Conversion</div>
-              </div>
-            </Link>
-            </div>
-            </div>
-
-        </div>
-
-        </div>
-        </div>
-         
-      );
-    };
-export default Games
+export default Games;

@@ -1,14 +1,13 @@
 import { getDatabase, ref, get, set } from "firebase/database";
 import { auth } from "./firebase"; // Või õige tee, kus firebase on
 
-export function saveScore(points, userId) {
+export function saveScore(points, userId, datalocation) {
   if (!auth.currentUser) {
-    console.log("Kasutaja ei ole sisse logitud, skoori salvestamine on keelatud.");
     return;
   }
 
   const db = getDatabase();
-  const scoresRef = ref(db, "addition_scores/" + userId );
+  const scoresRef = ref(db, datalocation + userId );
 
   get(scoresRef).then((snapshot) => {
     let scores = snapshot.exists() ? snapshot.val() : [];

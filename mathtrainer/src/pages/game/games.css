@@ -11,8 +11,10 @@
     height: 100vh;
     margin-left: 5%;
     float: left;
-    justify-items: center;
-
+}
+.sidebaritem{
+    padding-left: 4%;
+    font-size: 1.5rem;
 }
 .gamestop {
     position: relative;
@@ -77,6 +79,7 @@
     -webkit-box-shadow: 10px 10px 52px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 52px 0px rgba(0,0,0,0.75);
     box-shadow: 10px 10px 52px 0px rgba(0,0,0,0.75);
+    background-color: #bebebe;
 }
 
 .gameimage{
