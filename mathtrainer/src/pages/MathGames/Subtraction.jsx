@@ -1,5 +1,5 @@
 import {useEffect, useRef, useState } from "react"
-import "./compmodes.css"
+import styles from "/src/pages/MathGames/compmodes.module.css"
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase/firebase"; 
 import { saveScore } from "../../firebase/savescore";
@@ -175,20 +175,20 @@ useEffect(() => {
 
   return (
     <div> 
-        <div className="statsbox">
+        <div className={styles.statsbox}>
             <p>LEVEL:{level}</p>
             <p>TIME: {seconds} sec</p>
             <p>POINTS: {points}  </p>
         </div>
 
-        <div className= "body">
-                {gameStatus === true ? <label className= "operation">{randomNumber} {operation} {randomNumber2}</label> : ""}
+        <div className= {styles.body}>
+                {gameStatus === true ? <label className= {styles.operation}>{randomNumber} {operation} {randomNumber2}</label> : ""}
                 <br />
                 <br />
-                <label className= "answer">{answer}</label>
+                <label className= {styles.answer}>{answer}</label>
 
                     {showGif && (
-                    <div className="gif-popup">
+                    <div className={styles.gif_popup}>
                     <img src="/gif/wrongans.gif"  />
                     </div>
                     )}
@@ -196,7 +196,7 @@ useEffect(() => {
             <br />
 
             <div >
-                <div className="keyboard">
+                <div className={styles.keyboard}>
                     <button onClick={() => setAnswer(answer + "7")}>7</button>
                     <button onClick={() => setAnswer(answer + "8")}>8</button>
                     <button onClick={() => setAnswer(answer + "9")}>9</button>
@@ -216,7 +216,7 @@ useEffect(() => {
                 <br />
                 <br />
 
-                {gameStatus === false ?<button className="button-00" onClick={() => startGame()}>START</button>  : undefined}
+                {gameStatus === false ?<button className={styles.button_00} onClick={() => startGame()}>START</button>  : undefined}
             </div>
        
         </div>

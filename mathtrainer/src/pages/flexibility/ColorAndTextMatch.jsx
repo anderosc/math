@@ -1,5 +1,5 @@
 import {useEffect, useRef, useState } from "react"
-import "./compmodes.css"
+import styles from "./colorandtextmatch.module.css"
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase/firebase"; 
 import { saveScore } from "../../firebase/savescore";
@@ -142,19 +142,19 @@ function ColorAndTextMatch() {
       
 
   return (
-    <div className="game"> 
-        <div className="statsbox">
+    <div className={styles.game}> 
+        <div className={styles.statsbox}>
             <p>TIME: {seconds} sec</p>
             <p>POINTS: {points}  </p>
         </div>
 
-        <div className= "body">
+        <div className= {styles.body}>
                 {gameStatus === true ? <label style={{ width: "300px", height: "90px", fontSize: "60px", backgroundColor: backgroundcolor, color: textcolor}}>{operation}  </label> : <label className= "operation"> </label> }
                 <br />
                 <br />
 
                     {showGif && (
-                    <div className="gif-popup">
+                    <div className={styles.game}>
                     <img src="/gif/wrongans.gif"  />
                     </div>
                     )}
@@ -162,7 +162,7 @@ function ColorAndTextMatch() {
             <br />
 
             <div >
-                <div className="keyboard">
+                <div className={styles.keyboard}>
 
                     <button onClick={() => checkAnswer()}>TRUE</button>
                     <button onClick={() => checkAnswer()}>FALSE</button>
@@ -171,7 +171,7 @@ function ColorAndTextMatch() {
                 <br />
                 <br />
 
-                {gameStatus === false ?<button className="button-00" onClick={() => startGame()}>START</button>  : undefined}
+                {gameStatus === false ?<button className={styles.button_00} onClick={() => startGame()}>START</button>  : undefined}
             </div>
        
         </div>

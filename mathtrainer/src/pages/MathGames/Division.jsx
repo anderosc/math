@@ -1,5 +1,5 @@
 import {useEffect, useRef, useState } from "react"
-import "./compmodes.css"
+import styles from "/src/pages/MathGames/compmodes.module.css"
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase/firebase"; 
 import { saveScore } from "../../firebase/savescore";
@@ -169,54 +169,54 @@ function Division() {
       
 
   return (
-    <div> 
-        <div className="statsbox">
-            <p>LEVEL:{level}</p>
-            <p>TIME: {seconds} sec</p>
-            <p>POINTS: {points}  </p>
-        </div>
-
-        <div className= "body">
-                {gameStatus === true ? <label className= "operation">{randomNumber} {operation} {randomNumber2}</label> : ""}
-                <br />
-                <br />
-                <label className= "answer">{answer}</label>
-
-                    {showGif && (
-                    <div className="gif-popup">
-                    <img src="/gif/wrongans.gif"  />
-                    </div>
-                    )}
-
-            <br />
-
-            <div >
-                <div className="keyboard">
-                    <button onClick={() => setAnswer(answer + "7")}>7</button>
-                    <button onClick={() => setAnswer(answer + "8")}>8</button>
-                    <button onClick={() => setAnswer(answer + "9")}>9</button>
-                    <br />
-                    <button onClick={() => setAnswer(answer + "4")}>4</button>
-                    <button onClick={() => setAnswer(answer + "5")}>5</button>
-                    <button onClick={() => setAnswer(answer + "6")}>6</button>
-                    <br />
-                    <button onClick={() => setAnswer(answer + "1")}>1</button>
-                    <button onClick={() => setAnswer(answer + "2")}>2</button>
-                    <button onClick={() => setAnswer(answer + "3")}>3</button>
-                    <br />
-                    <button onClick={() => setAnswer(answer + "0")}>0</button>
-                    <button onClick={() => setAnswer(answer.slice(0, answer.length-1, ))}>C</button>
-                    <button onClick={() => checkAnswer()}>OK</button>
-                </div>
-                <br />
-                <br />
-
-                {gameStatus === false ?<button className="button-00" onClick={() => startGame()}>START</button>  : undefined}
-            </div>
-       
-        </div>
-    </div>
-  )
-}
+   <div> 
+           <div className={styles.statsbox}>
+               <p>LEVEL:{level}</p>
+               <p>TIME: {seconds} sec</p>
+               <p>POINTS: {points}  </p>
+           </div>
+   
+           <div className= {styles.body}>
+                   {gameStatus === true ? <label className= {styles.operation}>{randomNumber} {operation} {randomNumber2}</label> : ""}
+                   <br />
+                   <br />
+                   <label className= {styles.answer}>{answer}</label>
+   
+                       {showGif && (
+                       <div className={styles.gif_popup}>
+                       <img src="/gif/wrongans.gif"  />
+                       </div>
+                       )}
+   
+               <br />
+   
+               <div >
+                   <div className={styles.keyboard}>
+                       <button onClick={() => setAnswer(answer + "7")}>7</button>
+                       <button onClick={() => setAnswer(answer + "8")}>8</button>
+                       <button onClick={() => setAnswer(answer + "9")}>9</button>
+                       <br />
+                       <button onClick={() => setAnswer(answer + "4")}>4</button>
+                       <button onClick={() => setAnswer(answer + "5")}>5</button>
+                       <button onClick={() => setAnswer(answer + "6")}>6</button>
+                       <br />
+                       <button onClick={() => setAnswer(answer + "1")}>1</button>
+                       <button onClick={() => setAnswer(answer + "2")}>2</button>
+                       <button onClick={() => setAnswer(answer + "3")}>3</button>
+                       <br />
+                       <button onClick={() => setAnswer(answer + "0")}>0</button>
+                       <button onClick={() => setAnswer(answer.slice(0, answer.length-1, ))}>C</button>
+                       <button onClick={() => checkAnswer()}>OK</button>
+                   </div>
+                   <br />
+                   <br />
+   
+                   {gameStatus === false ?<button className={styles.button_00} onClick={() => startGame()}>START</button>  : undefined}
+               </div>
+          
+           </div>
+       </div>
+     )
+   }
 
 export default Division

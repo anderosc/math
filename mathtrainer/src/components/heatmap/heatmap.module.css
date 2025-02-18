@@ -1,0 +1,34 @@
+.weekdot{
+    border: 1px solid black;
+    width: 10px;
+    height: 10px;
+
+
+}
+.table{
+    border: 1px solid black;
+    padding: 0px;
+}
+.ul{
+    list-style-type: none;
+    padding: 0px;
+    page-break-inside: avoid;
+
+}
+.tr, .td, .th{
+    vertical-align: top;
+    padding: 0px;
+    page-break-inside: avoid;
+
+}
+.heatmap{
+    border: 1px solid red;
+    height: 130px;
+    width: 700px;
+    display: flex;
+    justify-content: center;
+}
+.y{
+    display: flex;
+    justify-content: center;
+}

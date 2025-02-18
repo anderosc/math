@@ -1,6 +1,7 @@
 import Accordion from 'react-bootstrap/Accordion';
-import "./statistics.css"
+// import "./statistics.css"
 import { useAuth } from "../../contexts/authContext";
+import Heatmap from '../../components/heatmap/Heatmap';
 
 
 function Statistics() {
@@ -11,8 +12,7 @@ function Statistics() {
   return (
     
     <div>
-        
-        Log in to see your stats.
+        < Heatmap />
     
     </div> 
   );

@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import "../MathGames/compmodes.css"
 import "./threeDrotation.css"
 
 function threeDrotation() {
