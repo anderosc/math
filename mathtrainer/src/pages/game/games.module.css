@@ -73,13 +73,14 @@
     -webkit-box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.75);
     box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.75);
+    background-color: #ffffff;
 
 }
 .gamesboxinside:hover{
     -webkit-box-shadow: 10px 10px 52px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 52px 0px rgba(0,0,0,0.75);
     box-shadow: 10px 10px 52px 0px rgba(0,0,0,0.75);
-    background-color: #bebebe;
+    background-color: #ffffff;
 }
 
 .gameimage{

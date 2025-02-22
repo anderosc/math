@@ -37,4 +37,7 @@ export function saveScore(points, userId, datalocation) {
   }).catch((error) => {
     console.error("Andmete salvestamisel tekkis viga:", error);
   });
+
+
+
 }
