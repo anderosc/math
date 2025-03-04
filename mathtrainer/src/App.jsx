@@ -9,12 +9,12 @@ import Addition from "./pages/MathGames/Addition";
 import Subtraction from "./pages/MathGames/Subtraction";
 import Multiplication from "./pages/MathGames/Multiplication";
 import Division from "./pages/MathGames/Division";
-import Statistics from "./pages/statistics/Statistics";
 import ThreeDrotation from "./pages/spatialReasoning/threeDrotation";
 import BinaryConversion from "./pages/BinaryConversion/BinaryConversion";
 import Login from "./auth/Login";
 import SignUp from "./auth/SignUp";
 import ColorAndTextMatch from "./pages/flexibility/ColorAndTextMatch";
+import Statistics from "./pages/statistics/Statistics";
 
 function App() {
 

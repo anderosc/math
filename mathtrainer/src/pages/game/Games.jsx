@@ -9,6 +9,7 @@ import { auth } from "../../firebase/firebase";
 function Games() {
   const [likedGames, setLikedGames] = useState({});
   const realtimeDB = getDatabase();
+  
 
   useEffect(() => {
     async function fetchLikedGames() {
@@ -113,7 +114,7 @@ function Games() {
             <br />
             <MenuItem onClick={() => setSelectedCategory(null)}>Show All</MenuItem>
             <br />
-            <MenuItem onClick={() => setSelectedCategory(null)}>Favorites</MenuItem>
+           { auth.currentUser && <MenuItem onClick={() => setSelectedCategory(null)}>Favorites</MenuItem>}
             <br />
 
             <div className={styles.sidebaritem}> GAMES</div>
@@ -132,12 +133,12 @@ function Games() {
                   <div className={styles.gamesbox}>
                     {games.map((game) => (
                       <div className={styles.gamesboxinside} key={game.id}>
-                         <img
+                         {auth.currentUser && <img
                       src={`/games/math/like/${likedGames[game.id] ? "liked.svg" : "not-liked.svg"}`}
                       alt="Like Button"
                       onClick={() => changeLike(game.id)}
                       className={styles.likeButton} // TODO: Add styles to img if needed
-                    />
+                    />}
                         <Link className={styles.Link} to={game.link}>
                           <div className={styles.singlegame}>
                             <img src={game.image} className={styles.gameimage} alt={game.description} />
