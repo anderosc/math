@@ -1,0 +1,34 @@
+@import "./mixins";
+
+
+.input-wrapper {
+    display: block;
+    font-family: monospace;
+    font-size: 125%;
+    width: 50%;
+    > input,
+    > .placeholder {
+      display: block;
+      appearance: none;
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+      border: none;
+    }
+    > .placeholder {
+      pointer-events: pause 2s;
+      > .placeholder {
+        pointer-events: none;
+        @include typed("How many roads must a man walk down before you call him a man?", 1.5s);
+      }
+      
+    }
+    > input {
+      &:focus,
+      &:active {
+        + .placeholder {
+          display: none;
+        }
+      }
+    }
+  }

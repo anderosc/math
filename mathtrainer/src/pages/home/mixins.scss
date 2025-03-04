@@ -1,0 +1,22 @@
+// src/styles/mixins.scss
+@mixin typed($text, $speed) {
+    animation: typing $speed steps(40, end), blink-caret 0.75s step-end infinite;
+    content: $text;
+  }
+  
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: black; }
+  }
+  .placeholder {
+    animation: typing 2s steps(40, end), pause 55s, blink-caret 0.75s step-end infinite;
+  }
+  @keyframes pause {
+    0% { width: 100%; }
+    100% { width: 100%; }
+  }
