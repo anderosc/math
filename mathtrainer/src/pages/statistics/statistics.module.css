@@ -1,0 +1,22 @@
+.top{
+    display: flex;
+}
+.navbar{
+    padding-left: 5%;
+    padding-top: 5%;
+}
+.stats{
+   padding-top: 5%;
+   padding-left: 2%;
+}
+.cat{
+    font-size: 25px;
+}
+.container{
+    text-align: center;
+    padding: 15px;
+}
+.chartContainer2{
+    height: 400px;
+    min-width: 700px;
+}

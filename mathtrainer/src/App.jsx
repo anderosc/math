@@ -15,6 +15,7 @@ import Login from "./auth/Login";
 import SignUp from "./auth/SignUp";
 import ColorAndTextMatch from "./pages/flexibility/ColorAndTextMatch";
 import Statistics from "./pages/statistics/Statistics";
+import Contact from "./pages/Contact";
 
 function App() {
 
@@ -29,6 +30,8 @@ function App() {
     <Route path="/login" element={< Login />} />
     <Route path="/signup" element={< SignUp />} />
     <Route path="/games" element={< Games />} /> 
+    <Route path="/contact" element={< Contact />} /> 
+
 
     <Route path="/games/addition" element={< Addition />} /> 
     <Route path="/games/subtraction" element={< Subtraction />} /> 

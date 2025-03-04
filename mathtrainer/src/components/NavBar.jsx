@@ -23,11 +23,9 @@ function NavBar() {
             <Nav.Link as={Link} to="/home">Home</Nav.Link>
             <Nav.Link as={Link} to="/games">Games</Nav.Link>
             <Nav.Link as={Link} to="/statistics">Statistics</Nav.Link>
-            <Nav.Link as={Link} to=" ">About</Nav.Link>
             <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
-
           </Nav>
-
+          
             <br />
             {userLoggedIn ? 
                 <NavDropdown title={username} id="basic-nav-dropdown">

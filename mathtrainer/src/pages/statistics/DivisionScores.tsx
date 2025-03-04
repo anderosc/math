@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { getDatabase, ref, get } from "firebase/database";
+import { auth } from "../../firebase/firebase";
 import styles from "./statistics.module.css"
 
-import { auth } from "../../firebase/firebase"; // Asenda õige tee
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -90,9 +90,9 @@ function createScoreDistribution(comparisonScores: number[]) {
   return { distribution, scoreRanges };
 }
 
-const AdditionScores: React.FC = () => {
+const DivisionScores: React.FC = () => {
   const userId = auth.currentUser?.uid || ""; 
-  const { scores, loading } = useScores("addition_scores", userId);
+  const { scores, loading } = useScores("division_scores", userId);
   const averageScore = calculateAverage(scores); 
 
   const comparisonScores =  [
@@ -175,7 +175,7 @@ const AdditionScores: React.FC = () => {
         <p>Uuups! We dont have data. Please play games or log in to see your stats.</p>
       ) : (
         <div>
-          <h3>Addition Average Score: {averageScore}</h3>
+          <h3>Division Average Score: {averageScore}</h3>
           <div className={styles.chartContainer2}>
             <Line data={chartData} options={chartOptions} /> 
           </div>
@@ -186,4 +186,4 @@ const AdditionScores: React.FC = () => {
 };
 
 
-export default AdditionScores;
+export default DivisionScores;
